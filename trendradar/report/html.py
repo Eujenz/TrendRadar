@@ -1,8 +1,8 @@
 # coding=utf-8
 """
-HTML 报告渲染模块
+HTML 報告渲染模塊
 
-提供 HTML 格式的热点新闻报告生成功能
+提供 HTML 格式的熱點新聞報告生成功能
 """
 
 from datetime import datetime
@@ -28,26 +28,26 @@ def render_html_content(
     ai_analysis: Optional[Any] = None,
     show_new_section: bool = True,
 ) -> str:
-    """渲染HTML内容
+    """渲染HTML內容
 
     Args:
-        report_data: 报告数据字典，包含 stats, new_titles, failed_ids, total_new_count
-        total_titles: 新闻总数
-        mode: 报告模式 ("daily", "current", "incremental")
-        update_info: 更新信息（可选）
-        region_order: 区域显示顺序列表
-        get_time_func: 获取当前时间的函数（可选，默认使用 datetime.now）
-        rss_items: RSS 统计条目列表（可选）
-        rss_new_items: RSS 新增条目列表（可选）
-        display_mode: 显示模式 ("keyword"=按关键词分组, "platform"=按平台分组)
-        standalone_data: 独立展示区数据（可选），包含 platforms 和 rss_feeds
-        ai_analysis: AI 分析结果对象（可选），AIAnalysisResult 实例
-        show_new_section: 是否显示新增热点区域
+        report_data: 報告數據字典，包含 stats, new_titles, failed_ids, total_new_count
+        total_titles: 新聞總數
+        mode: 報告模式 ("daily", "current", "incremental")
+        update_info: 更新資訊（可選）
+        region_order: 區域顯示順序列表
+        get_time_func: 獲取當前時間的函數（可選，默認使用 datetime.now）
+        rss_items: RSS 統計條目列表（可選）
+        rss_new_items: RSS 新增條目列表（可選）
+        display_mode: 顯示模式 ("keyword"=按關鍵詞分組, "platform"=按平台分組)
+        standalone_data: 獨立展示區數據（可選），包含 platforms 和 rss_feeds
+        ai_analysis: AI 分析結果對象（可選），AIAnalysisResult 實例
+        show_new_section: 是否顯示新增熱點區域
 
     Returns:
-        渲染后的 HTML 字符串
+        渲染後的 HTML 字符串
     """
-    # 默认区域顺序
+    # 默認區域順序
     default_region_order = ["hotlist", "rss", "new_items", "standalone", "ai_analysis"]
     if region_order is None:
         region_order = default_region_order
@@ -58,7 +58,7 @@ def render_html_content(
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>热点新闻分析</title>
+        <title>熱點新聞分析</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <style>
             * { box-sizing: border-box; }
@@ -326,16 +326,16 @@ def render_html_content(
                 color: #7c3aed;
             }
 
-            /* 通用区域分割线样式 */
+            /* 通用區域分割線樣式 */
             .section-divider {
                 margin-top: 32px;
                 padding-top: 24px;
                 border-top: 2px solid #e5e7eb;
             }
 
-            /* 热榜统计区样式 */
+            /* 熱榜統計區樣式 */
             .hotlist-section {
-                /* 默认无边框，由 section-divider 动态添加 */
+                /* 默認無邊框，由 section-divider 動態添加 */
             }
 
             .new-section {
@@ -502,7 +502,7 @@ def render_html_content(
                 }
             }
 
-            /* RSS 订阅内容样式 */
+            /* RSS 訂閱內容樣式 */
             .rss-section {
                 margin-top: 32px;
                 padding-top: 24px;
@@ -614,7 +614,7 @@ def render_html_content(
                 overflow: hidden;
             }
 
-            /* 独立展示区样式 - 复用热点词汇统计区样式 */
+            /* 獨立展示區樣式 - 復用熱點詞彙統計區樣式 */
             .standalone-section {
                 margin-top: 32px;
                 padding-top: 24px;
@@ -667,7 +667,7 @@ def render_html_content(
                 font-weight: 500;
             }
 
-            /* AI 分析区块样式 */
+            /* AI 分析區塊樣式 */
             .ai-section {
                 margin-top: 32px;
                 padding: 24px;
@@ -738,49 +738,49 @@ def render_html_content(
         <div class="container">
             <div class="header">
                 <div class="save-buttons">
-                    <button class="save-btn" onclick="saveAsImage()">保存为图片</button>
+                    <button class="save-btn" onclick="saveAsImage()">保存為圖片</button>
                     <button class="save-btn" onclick="saveAsMultipleImages()">分段保存</button>
                 </div>
-                <div class="header-title">热点新闻分析</div>
+                <div class="header-title">熱點新聞分析</div>
                 <div class="header-info">
                     <div class="info-item">
-                        <span class="info-label">报告类型</span>
+                        <span class="info-label">報告類型</span>
                         <span class="info-value">"""
 
-    # 处理报告类型显示（根据 mode 直接显示）
+    # 處理報告類型顯示（根據 mode 直接顯示）
     if mode == "current":
-        html += "当前榜单"
+        html += "當前榜單"
     elif mode == "incremental":
         html += "增量分析"
     else:
-        html += "全天汇总"
+        html += "全天匯總"
 
     html += """</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">新闻总数</span>
+                        <span class="info-label">新聞總數</span>
                         <span class="info-value">"""
 
-    html += f"{total_titles} 条"
+    html += f"{total_titles} 條"
 
-    # 计算筛选后的热点新闻数量
+    # 計算篩選後的熱點新聞數量
     hot_news_count = sum(len(stat["titles"]) for stat in report_data["stats"])
 
     html += """</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">热点新闻</span>
+                        <span class="info-label">熱點新聞</span>
                         <span class="info-value">"""
 
-    html += f"{hot_news_count} 条"
+    html += f"{hot_news_count} 條"
 
     html += """</span>
                     </div>
                     <div class="info-item">
-                        <span class="info-label">生成时间</span>
+                        <span class="info-label">生成時間</span>
                         <span class="info-value">"""
 
-    # 使用提供的时间函数或默认 datetime.now
+    # 使用提供的時間函數或默認 datetime.now
     if get_time_func:
         now = get_time_func()
     else:
@@ -794,11 +794,11 @@ def render_html_content(
 
             <div class="content">"""
 
-    # 处理失败ID错误信息
+    # 處理失敗ID錯誤信息
     if report_data["failed_ids"]:
         html += """
                 <div class="error-section">
-                    <div class="error-title">⚠️ 请求失败的平台</div>
+                    <div class="error-title">⚠️ 請求失敗的平台</div>
                     <ul class="error-list">"""
         for id_value in report_data["failed_ids"]:
             html += f'<li class="error-item">{html_escape(id_value)}</li>'
@@ -806,7 +806,7 @@ def render_html_content(
                     </ul>
                 </div>"""
 
-    # 生成热点词汇统计部分的HTML
+    # 生成熱點詞彙統計部分的HTML
     stats_html = ""
     if report_data["stats"]:
         total_count = len(report_data["stats"])
@@ -814,7 +814,7 @@ def render_html_content(
         for i, stat in enumerate(report_data["stats"], 1):
             count = stat["count"]
 
-            # 确定热度等级
+            # 確定熱度等級
             if count >= 10:
                 count_class = "hot"
             elif count >= 5:
@@ -829,12 +829,12 @@ def render_html_content(
                     <div class="word-header">
                         <div class="word-info">
                             <div class="word-name">{escaped_word}</div>
-                            <div class="word-count {count_class}">{count} 条</div>
+                            <div class="word-count {count_class}">{count} 條</div>
                         </div>
                         <div class="word-index">{i}/{total_count}</div>
                     </div>"""
 
-            # 处理每个词组下的新闻标题，给每条新闻标上序号
+            # 處理每個詞組下的新聞標題，給每條新聞標上序號
             for j, title_data in enumerate(stat["titles"], 1):
                 is_new = title_data.get("is_new", False)
                 new_class = "new" if is_new else ""
@@ -845,24 +845,24 @@ def render_html_content(
                         <div class="news-content">
                             <div class="news-header">"""
 
-                # 根据 display_mode 决定显示来源还是关键词
+                # 根據 display_mode 決定顯示來源還是關鍵詞
                 if display_mode == "keyword":
-                    # keyword 模式：显示来源
+                    # keyword 模式：顯示來源
                     stats_html += f'<span class="source-name">{html_escape(title_data["source_name"])}</span>'
                 else:
-                    # platform 模式：显示关键词
+                    # platform 模式：顯示關鍵詞
                     matched_keyword = title_data.get("matched_keyword", "")
                     if matched_keyword:
                         stats_html += f'<span class="keyword-tag">[{html_escape(matched_keyword)}]</span>'
 
-                # 处理排名显示
+                # 處理排名顯示
                 ranks = title_data.get("ranks", [])
                 if ranks:
                     min_rank = min(ranks)
                     max_rank = max(ranks)
                     rank_threshold = title_data.get("rank_threshold", 10)
 
-                    # 确定排名等级
+                    # 確定排名等級
                     if min_rank <= 3:
                         rank_class = "top"
                     elif min_rank <= rank_threshold:
@@ -877,10 +877,10 @@ def render_html_content(
 
                     stats_html += f'<span class="rank-num {rank_class}">{rank_text}</span>'
 
-                # 处理时间显示
+                # 處理時間顯示
                 time_display = title_data.get("time_display", "")
                 if time_display:
-                    # 简化时间显示格式，将波浪线替换为~
+                    # 簡化時間顯示格式，將波浪線替換為~
                     simplified_time = (
                         time_display.replace(" ~ ", "~")
                         .replace("[", "")
@@ -890,7 +890,7 @@ def render_html_content(
                         f'<span class="time-info">{html_escape(simplified_time)}</span>'
                     )
 
-                # 处理出现次数
+                # 處理出現次數
                 count_info = title_data.get("count", 1)
                 if count_info > 1:
                     stats_html += f'<span class="count-info">{count_info}次</span>'
@@ -899,7 +899,7 @@ def render_html_content(
                             </div>
                             <div class="news-title">"""
 
-                # 处理标题和链接
+                # 處理標題和鏈接
                 escaped_title = html_escape(title_data["title"])
                 link_url = title_data.get("mobile_url") or title_data.get("url", "")
 
@@ -917,18 +917,18 @@ def render_html_content(
             stats_html += """
                 </div>"""
 
-    # 给热榜统计添加外层包装
+    # 給熱榜統計添加外層包裝
     if stats_html:
         stats_html = f"""
                 <div class="hotlist-section">{stats_html}
                 </div>"""
 
-    # 生成新增新闻区域的HTML
+    # 生成新增新聞區域的HTML
     new_titles_html = ""
     if show_new_section and report_data["new_titles"]:
         new_titles_html += f"""
                 <div class="new-section">
-                    <div class="new-section-title">本次新增热点 (共 {report_data['total_new_count']} 条)</div>"""
+                    <div class="new-section-title">本次新增熱點 (共 {report_data['total_new_count']} 條)</div>"""
 
         for source_data in report_data["new_titles"]:
             escaped_source = html_escape(source_data["source_name"])
@@ -936,13 +936,13 @@ def render_html_content(
 
             new_titles_html += f"""
                     <div class="new-source-group">
-                        <div class="new-source-title">{escaped_source} · {titles_count}条</div>"""
+                        <div class="new-source-title">{escaped_source} · {titles_count}條</div>"""
 
-            # 为新增新闻也添加序号
+            # 為新增新聞也添加序號
             for idx, title_data in enumerate(source_data["titles"], 1):
                 ranks = title_data.get("ranks", [])
 
-                # 处理新增新闻的排名显示
+                # 處理新增新聞的排名顯示
                 rank_class = ""
                 if ranks:
                     min_rank = min(ranks)
@@ -965,7 +965,7 @@ def render_html_content(
                             <div class="new-item-content">
                                 <div class="new-item-title">"""
 
-                # 处理新增新闻的链接
+                # 處理新增新聞的鏈接
                 escaped_title = html_escape(title_data["title"])
                 link_url = title_data.get("mobile_url") or title_data.get("url", "")
 
@@ -986,20 +986,20 @@ def render_html_content(
         new_titles_html += """
                 </div>"""
 
-    # 生成 RSS 统计内容
-    def render_rss_stats_html(stats: List[Dict], title: str = "RSS 订阅更新") -> str:
-        """渲染 RSS 统计区块 HTML
+    # 生成 RSS 統計內容
+    def render_rss_stats_html(stats: List[Dict], title: str = "RSS 訂閱更新") -> str:
+        """渲染 RSS 統計區塊 HTML
 
         Args:
-            stats: RSS 分组统计列表，格式与热榜一致：
+            stats: RSS 分組統計列表，格式與熱榜一致：
                 [
                     {
-                        "word": "关键词",
+                        "word": "關鍵詞",
                         "count": 5,
                         "titles": [
                             {
-                                "title": "标题",
-                                "source_name": "Feed 名称",
+                                "title": "標題",
+                                "source_name": "Feed 名稱",
                                 "time_display": "12-29 08:20",
                                 "url": "...",
                                 "is_new": True/False
@@ -1007,15 +1007,15 @@ def render_html_content(
                         ]
                     }
                 ]
-            title: 区块标题
+            title: 區塊標題
 
         Returns:
-            渲染后的 HTML 字符串
+            渲染後的 HTML 字符串
         """
         if not stats:
             return ""
 
-        # 计算总条目数
+        # 計算總條目數
         total_count = sum(stat.get("count", 0) for stat in stats)
         if total_count == 0:
             return ""
@@ -1024,10 +1024,10 @@ def render_html_content(
                 <div class="rss-section">
                     <div class="rss-section-header">
                         <div class="rss-section-title">{title}</div>
-                        <div class="rss-section-count">{total_count} 条</div>
+                        <div class="rss-section-count">{total_count} 條</div>
                     </div>"""
 
-        # 按关键词分组渲染（与热榜格式一致）
+        # 按關鍵詞分組渲染（與熱榜格式一致）
         for stat in stats:
             keyword = stat.get("word", "")
             titles = stat.get("titles", [])
@@ -1040,7 +1040,7 @@ def render_html_content(
                     <div class="feed-group">
                         <div class="feed-header">
                             <div class="feed-name">{html_escape(keyword)}</div>
-                            <div class="feed-count">{keyword_count} 条</div>
+                            <div class="feed-count">{keyword_count} 條</div>
                         </div>"""
 
             for title_data in titles:
@@ -1085,21 +1085,21 @@ def render_html_content(
                 </div>"""
         return rss_html
 
-    # 生成独立展示区内容
+    # 生成獨立展示區內容
     def render_standalone_html(data: Optional[Dict]) -> str:
-        """渲染独立展示区 HTML（复用热点词汇统计区样式）
+        """渲染獨立展示區 HTML（復用熱點詞彙統計區樣式）
 
         Args:
-            data: 独立展示数据，格式：
+            data: 獨立展示數據，格式：
                 {
                     "platforms": [
                         {
                             "id": "zhihu",
-                            "name": "知乎热榜",
+                            "name": "知乎熱榜",
                             "items": [
                                 {
-                                    "title": "标题",
-                                    "url": "链接",
+                                    "title": "標題",
+                                    "url": "鏈接",
                                     "rank": 1,
                                     "ranks": [1, 2, 1],
                                     "first_time": "08:00",
@@ -1115,8 +1115,8 @@ def render_html_content(
                             "name": "Hacker News",
                             "items": [
                                 {
-                                    "title": "标题",
-                                    "url": "链接",
+                                    "title": "標題",
+                                    "url": "鏈接",
                                     "published_at": "2025-01-07T08:00:00",
                                     "author": "作者",
                                 }
@@ -1126,7 +1126,7 @@ def render_html_content(
                 }
 
         Returns:
-            渲染后的 HTML 字符串
+            渲染後的 HTML 字符串
         """
         if not data:
             return ""
@@ -1137,7 +1137,7 @@ def render_html_content(
         if not platforms and not rss_feeds:
             return ""
 
-        # 计算总条目数
+        # 計算總條目數
         total_platform_items = sum(len(p.get("items", [])) for p in platforms)
         total_rss_items = sum(len(f.get("items", [])) for f in rss_feeds)
         total_count = total_platform_items + total_rss_items
@@ -1148,11 +1148,11 @@ def render_html_content(
         standalone_html = f"""
                 <div class="standalone-section">
                     <div class="standalone-section-header">
-                        <div class="standalone-section-title">独立展示区</div>
-                        <div class="standalone-section-count">{total_count} 条</div>
+                        <div class="standalone-section-title">獨立展示區</div>
+                        <div class="standalone-section-count">{total_count} 條</div>
                     </div>"""
 
-        # 渲染热榜平台（复用 word-group 结构）
+        # 渲染熱榜平台（復用 word-group 結構）
         for platform in platforms:
             platform_name = platform.get("name", platform.get("id", ""))
             items = platform.get("items", [])
@@ -1163,10 +1163,10 @@ def render_html_content(
                     <div class="standalone-group">
                         <div class="standalone-header">
                             <div class="standalone-name">{html_escape(platform_name)}</div>
-                            <div class="standalone-count">{len(items)} 条</div>
+                            <div class="standalone-count">{len(items)} 條</div>
                         </div>"""
 
-            # 渲染每个条目（复用 news-item 结构）
+            # 渲染每個條目（復用 news-item 結構）
             for j, item in enumerate(items, 1):
                 title = item.get("title", "")
                 url = item.get("url", "") or item.get("mobileUrl", "")
@@ -1182,12 +1182,12 @@ def render_html_content(
                             <div class="news-content">
                                 <div class="news-header">"""
 
-                # 排名显示（复用 rank-num 样式，无 # 前缀）
+                # 排名顯示（復用 rank-num 樣式，無 # 前綴）
                 if ranks:
                     min_rank = min(ranks)
                     max_rank = max(ranks)
 
-                    # 确定排名等级
+                    # 確定排名等級
                     if min_rank <= 3:
                         rank_class = "top"
                     elif min_rank <= 10:
@@ -1210,7 +1210,7 @@ def render_html_content(
                         rank_class = ""
                     standalone_html += f'<span class="rank-num {rank_class}">{rank}</span>'
 
-                # 时间显示（复用 time-info 样式，将 HH-MM 转换为 HH:MM）
+                # 時間顯示（復用 time-info 樣式，將 HH-MM 轉換為 HH:MM）
                 if first_time and last_time and first_time != last_time:
                     first_time_display = convert_time_for_display(first_time)
                     last_time_display = convert_time_for_display(last_time)
@@ -1219,7 +1219,7 @@ def render_html_content(
                     first_time_display = convert_time_for_display(first_time)
                     standalone_html += f'<span class="time-info">{html_escape(first_time_display)}</span>'
 
-                # 出现次数（复用 count-info 样式）
+                # 出現次數（復用 count-info 樣式）
                 if count > 1:
                     standalone_html += f'<span class="count-info">{count}次</span>'
 
@@ -1227,7 +1227,7 @@ def render_html_content(
                                 </div>
                                 <div class="news-title">"""
 
-                # 标题和链接（复用 news-link 样式）
+                # 標題和鏈接（復用 news-link 樣式）
                 escaped_title = html_escape(title)
                 if url:
                     escaped_url = html_escape(url)
@@ -1243,7 +1243,7 @@ def render_html_content(
             standalone_html += """
                     </div>"""
 
-        # 渲染 RSS 源（复用相同结构）
+        # 渲染 RSS 源（復用相同結構）
         for feed in rss_feeds:
             feed_name = feed.get("name", feed.get("id", ""))
             items = feed.get("items", [])
@@ -1254,7 +1254,7 @@ def render_html_content(
                     <div class="standalone-group">
                         <div class="standalone-header">
                             <div class="standalone-name">{html_escape(feed_name)}</div>
-                            <div class="standalone-count">{len(items)} 条</div>
+                            <div class="standalone-count">{len(items)} 條</div>
                         </div>"""
 
             for j, item in enumerate(items, 1):
@@ -1269,7 +1269,7 @@ def render_html_content(
                             <div class="news-content">
                                 <div class="news-header">"""
 
-                # 时间显示（格式化 ISO 时间）
+                # 時間顯示（格式化 ISO 時間）
                 if published_at:
                     try:
                         from datetime import datetime as dt
@@ -1283,7 +1283,7 @@ def render_html_content(
 
                     standalone_html += f'<span class="time-info">{html_escape(time_display)}</span>'
 
-                # 作者显示
+                # 作者顯示
                 if author:
                     standalone_html += f'<span class="source-name">{html_escape(author)}</span>'
 
@@ -1310,27 +1310,27 @@ def render_html_content(
                 </div>"""
         return standalone_html
 
-    # 生成 RSS 统计和新增 HTML
-    rss_stats_html = render_rss_stats_html(rss_items, "RSS 订阅更新") if rss_items else ""
+    # 生成 RSS 統計和新增 HTML
+    rss_stats_html = render_rss_stats_html(rss_items, "RSS 訂閱更新") if rss_items else ""
     rss_new_html = render_rss_stats_html(rss_new_items, "RSS 新增更新") if rss_new_items else ""
 
-    # 生成独立展示区 HTML
+    # 生成獨立展示區 HTML
     standalone_html = render_standalone_html(standalone_data)
 
     # 生成 AI 分析 HTML
     ai_html = render_ai_analysis_html_rich(ai_analysis) if ai_analysis else ""
 
-    # 准备各区域内容映射
+    # 準備各區域內容映射
     region_contents = {
         "hotlist": stats_html,
         "rss": rss_stats_html,
-        "new_items": (new_titles_html, rss_new_html),  # 元组，分别处理
+        "new_items": (new_titles_html, rss_new_html),  # 元組，分別處理
         "standalone": standalone_html,
         "ai_analysis": ai_html,
     }
 
     def add_section_divider(content: str) -> str:
-        """为内容的外层 div 添加 section-divider 类"""
+        """為內容的外層 div 添加 section-divider 類"""
         if not content or 'class="' not in content:
             return content
         first_class_pos = content.find('class="')
@@ -1339,12 +1339,12 @@ def render_html_content(
             return content[:insert_pos] + "section-divider " + content[insert_pos:]
         return content
 
-    # 按 region_order 顺序组装内容，动态添加分割线
+    # 按 region_order 順序組裝內容，動態添加分割線
     has_previous_content = False
     for region in region_order:
         content = region_contents.get(region, "")
         if region == "new_items":
-            # 特殊处理 new_items 区域（包含热榜新增和 RSS 新增两部分）
+            # 特殊處理 new_items 區域（包含熱榜新增和 RSS 新增兩部分）
             new_html, rss_new = content
             if new_html:
                 if has_previous_content:
@@ -1369,14 +1369,14 @@ def render_html_content(
                 <div class="footer-content">
                     由 <span class="project-name">TrendRadar</span> 生成 ·
                     <a href="https://github.com/sansan0/TrendRadar" target="_blank" class="footer-link">
-                        GitHub 开源项目
+                        GitHub 開源項目
                     </a>"""
 
     if update_info:
         html += f"""
                     <br>
                     <span style="color: #ea580c; font-weight: 500;">
-                        发现新版本 {update_info['remote_version']}，当前版本 {update_info['current_version']}
+                        發現新版本 {update_info['remote_version']}，當前版本 {update_info['current_version']}
                     </span>"""
 
     html += """
@@ -1394,14 +1394,14 @@ def render_html_content(
                     button.disabled = true;
                     window.scrollTo(0, 0);
 
-                    // 等待页面稳定
+                    // 等待頁面穩定
                     await new Promise(resolve => setTimeout(resolve, 200));
 
-                    // 截图前隐藏按钮
+                    // 截圖前隱藏按鈕
                     const buttons = document.querySelector('.save-buttons');
                     buttons.style.visibility = 'hidden';
 
-                    // 再次等待确保按钮完全隐藏
+                    // 再次等待確保按鈕完全隱藏
                     await new Promise(resolve => setTimeout(resolve, 100));
 
                     const container = document.querySelector('.container');
@@ -1429,12 +1429,12 @@ def render_html_content(
 
                     const link = document.createElement('a');
                     const now = new Date();
-                    const filename = `TrendRadar_热点新闻分析_${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}.png`;
+                    const filename = `TrendRadar_熱點新聞分析_${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}.png`;
 
                     link.download = filename;
                     link.href = canvas.toDataURL('image/png', 1.0);
 
-                    // 触发下载
+                    // 觸發下載
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
@@ -1448,7 +1448,7 @@ def render_html_content(
                 } catch (error) {
                     const buttons = document.querySelector('.save-buttons');
                     buttons.style.visibility = 'visible';
-                    button.textContent = '保存失败';
+                    button.textContent = '保存失敗';
                     setTimeout(() => {
                         button.textContent = originalText;
                         button.disabled = false;
@@ -1467,7 +1467,7 @@ def render_html_content(
                     button.textContent = '分析中...';
                     button.disabled = true;
 
-                    // 获取所有可能的分割元素
+                    // 獲取所有可能的分割元素
                     const newsItems = Array.from(container.querySelectorAll('.news-item'));
                     const wordGroups = Array.from(container.querySelectorAll('.word-group'));
                     const newSection = container.querySelector('.new-section');
@@ -1475,11 +1475,11 @@ def render_html_content(
                     const header = container.querySelector('.header');
                     const footer = container.querySelector('.footer');
 
-                    // 计算元素位置和高度
+                    // 計算元素位置和高度
                     const containerRect = container.getBoundingClientRect();
                     const elements = [];
 
-                    // 添加header作为必须包含的元素
+                    // 添加header作為必須包含的元素
                     elements.push({
                         type: 'header',
                         element: header,
@@ -1488,7 +1488,7 @@ def render_html_content(
                         height: header.offsetHeight
                     });
 
-                    // 添加错误信息（如果存在）
+                    // 添加錯誤信息（如果存在）
                     if (errorSection) {
                         const rect = errorSection.getBoundingClientRect();
                         elements.push({
@@ -1500,7 +1500,7 @@ def render_html_content(
                         });
                     }
 
-                    // 按word-group分组处理news-item
+                    // 按word-group分組處理news-item
                     wordGroups.forEach(group => {
                         const groupRect = group.getBoundingClientRect();
                         const groupNewsItems = group.querySelectorAll('.news-item');
@@ -1519,7 +1519,7 @@ def render_html_content(
                             });
                         }
 
-                        // 添加每个news-item
+                        // 添加每個news-item
                         groupNewsItems.forEach(item => {
                             const rect = item.getBoundingClientRect();
                             elements.push({
@@ -1533,7 +1533,7 @@ def render_html_content(
                         });
                     });
 
-                    // 添加新增新闻部分
+                    // 添加新增新聞部分
                     if (newSection) {
                         const rect = newSection.getBoundingClientRect();
                         elements.push({
@@ -1555,7 +1555,7 @@ def render_html_content(
                         height: footer.offsetHeight
                     });
 
-                    // 计算分割点
+                    // 計算分割點
                     const segments = [];
                     let currentSegment = { start: 0, end: 0, height: 0, includeHeader: true };
                     let headerHeight = header.offsetHeight;
@@ -1565,13 +1565,13 @@ def render_html_content(
                         const element = elements[i];
                         const potentialHeight = element.bottom - currentSegment.start;
 
-                        // 检查是否需要创建新分段
+                        // 檢查是否需要創建新分段
                         if (potentialHeight > maxHeight && currentSegment.height > headerHeight) {
-                            // 在前一个元素结束处分割
+                            // 在前一個元素結束處分割
                             currentSegment.end = elements[i - 1].bottom;
                             segments.push(currentSegment);
 
-                            // 开始新分段
+                            // 開始新分段
                             currentSegment = {
                                 start: currentSegment.end,
                                 end: 0,
@@ -1584,7 +1584,7 @@ def render_html_content(
                         }
                     }
 
-                    // 添加最后一个分段
+                    // 添加最後一個分段
                     if (currentSegment.height > 0) {
                         currentSegment.end = container.offsetHeight;
                         segments.push(currentSegment);
@@ -1592,17 +1592,17 @@ def render_html_content(
 
                     button.textContent = `生成中 (0/${segments.length})...`;
 
-                    // 隐藏保存按钮
+                    // 隱藏保存按鈕
                     const buttons = document.querySelector('.save-buttons');
                     buttons.style.visibility = 'hidden';
 
-                    // 为每个分段生成图片
+                    // 為每個分段生成圖片
                     const images = [];
                     for (let i = 0; i < segments.length; i++) {
                         const segment = segments[i];
                         button.textContent = `生成中 (${i + 1}/${segments.length})...`;
 
-                        // 创建临时容器用于截图
+                        // 創建臨時容器用於截圖
                         const tempContainer = document.createElement('div');
                         tempContainer.style.cssText = `
                             position: absolute;
@@ -1613,10 +1613,10 @@ def render_html_content(
                         `;
                         tempContainer.className = 'container';
 
-                        // 克隆容器内容
+                        // 克隆容器內容
                         const clonedContainer = container.cloneNode(true);
 
-                        // 移除克隆内容中的保存按钮
+                        // 移除克隆內容中的保存按鈕
                         const clonedButtons = clonedContainer.querySelector('.save-buttons');
                         if (clonedButtons) {
                             clonedButtons.style.display = 'none';
@@ -1628,7 +1628,7 @@ def render_html_content(
                         // 等待DOM更新
                         await new Promise(resolve => setTimeout(resolve, 100));
 
-                        // 使用html2canvas截取特定区域
+                        // 使用html2canvas截取特定區域
                         const canvas = await html2canvas(clonedContainer, {
                             backgroundColor: '#ffffff',
                             scale: scale,
@@ -1646,16 +1646,16 @@ def render_html_content(
 
                         images.push(canvas.toDataURL('image/png', 1.0));
 
-                        // 清理临时容器
+                        // 清理臨時容器
                         document.body.removeChild(tempContainer);
                     }
 
-                    // 恢复按钮显示
+                    // 恢復按鈕顯示
                     buttons.style.visibility = 'visible';
 
-                    // 下载所有图片
+                    // 下載所有圖片
                     const now = new Date();
-                    const baseFilename = `TrendRadar_热点新闻分析_${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
+                    const baseFilename = `TrendRadar_熱點新聞分析_${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
 
                     for (let i = 0; i < images.length; i++) {
                         const link = document.createElement('a');
@@ -1665,21 +1665,21 @@ def render_html_content(
                         link.click();
                         document.body.removeChild(link);
 
-                        // 延迟一下避免浏览器阻止多个下载
+                        // 延遲一下避免瀏覽器阻止多個下載
                         await new Promise(resolve => setTimeout(resolve, 100));
                     }
 
-                    button.textContent = `已保存 ${segments.length} 张图片!`;
+                    button.textContent = `已保存 ${segments.length} 張圖片!`;
                     setTimeout(() => {
                         button.textContent = originalText;
                         button.disabled = false;
                     }, 2000);
 
                 } catch (error) {
-                    console.error('分段保存失败:', error);
+                    console.error('分段保存失敗:', error);
                     const buttons = document.querySelector('.save-buttons');
                     buttons.style.visibility = 'visible';
-                    button.textContent = '保存失败';
+                    button.textContent = '保存失敗';
                     setTimeout(() => {
                         button.textContent = originalText;
                         button.disabled = false;
