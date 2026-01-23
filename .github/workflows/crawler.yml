@@ -89,7 +89,7 @@ jobs:
             else
               DAYS_LEFT=$(( (LIMIT_SECONDS - DIFF_SECONDS) / 86400 ))
               echo "✅ 试用期剩余 ${DAYS_LEFT} 天，到期前请运行 'Check In' 签到续期"
-              echo "✅ Trial: ${DAYS_LEFT} days left. Run 'Check In' before expiry to renew."
+              echo "✅ Trial ${DAYS_LEFT} days left. Run 'Check In' before expiry to renew."
             fi
           fi
 
