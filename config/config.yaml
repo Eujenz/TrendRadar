@@ -100,15 +100,15 @@ rss:
   # - 正整數：覆蓋全局設置，只推送此天數內的文章
   # - 0：禁用此頻道的新鮮度過濾，推送所有文章
   feeds:
-    - id: "blocktempo"
-      name: "動區動趨"
-      url: "https://www.blocktempo.com/feed/"
-      max_age_days: 1               # 示例：只推送1天內的文章
+    # - id: "blocktempo"
+    #   name: "動區動趨"
+    #   url: "https://www.blocktempo.com/feed/"
+    #   max_age_days: 1               # 示例：只推送1天內的文章
 
-    - id: "ruanyifeng"
-      name: "阮一峰的網絡日誌"
-      url: "http://www.ruanyifeng.com/blog/atom.xml"
-      max_age_days: 7               # 示例：推送7天內的文章（更新較慢的博客）
+    # - id: "ruanyifeng"
+    #   name: "阮一峰的網絡日誌"
+    #   url: "http://www.ruanyifeng.com/blog/atom.xml"
+    #   max_age_days: 7               # 示例：推送7天內的文章（更新較慢的博客）
     
     - id: "BusinessNext"
       name: "數位時代"
@@ -120,10 +120,10 @@ rss:
       url: "http://www.inside.com.tw/feed"
       max_age_days: 1    
 
-    - id: "Techbang"
-      name: "T客邦"
-      url: "http://ftr.fivefilters.org/makefulltextfeed.php?url=http%3A%2F%2Ffeeds.feedburner.com%2Ftechbang&max=3"
-      max_age_days: 1                      
+    # - id: "Techbang"
+    #   name: "T客邦"
+    #   url: "http://ftr.fivefilters.org/makefulltextfeed.php?url=http%3A%2F%2Ffeeds.feedburner.com%2Ftechbang&max=3"
+    #   max_age_days: 1                      
 
     # - id: "WOSHIPM"
     #   name: "人人都是產品經理"
@@ -461,7 +461,7 @@ ai_analysis:
                                       # GitHub Action 部署默認推送約 20 次（每小時推送一次）， 約 0.1 元/天
                                       # Docker 部署默認推送 48 次(每半小時推送一次)， 約 0.2 元/天
 
-  include_rss: true                 # 是否包含 RSS 內容進行分析
+  include_rss: false                # 是否包含 RSS 內容進行分析
 
   include_rank_timeline: false      # 是否傳遞完整排名時間線
                                     # false: 使用簡化格式（排名範圍+時間範圍+出現次數）
