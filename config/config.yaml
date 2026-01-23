@@ -26,95 +26,45 @@ app:
 #   - name: 顯示名稱（可自定義，修改後不影響運行）
 # ===============================================================
 platforms:
-  enabled: false                         # 是否啟用熱榜平台抓取
+  enabled: true                         # 是否啟用熱榜平台抓取
   sources:
   # === 綜合新聞媒體類 ===
-  - id: "toutiao"
-    name: "今日頭條"
-  - id: "baidu"
-    name: "百度熱搜"
-  - id: "thepaper"
-    name: "澎湃新聞"
-  - id: "ifeng"
-    name: "鳳凰網"
-  - id: "cankaoxiaoxi"
-    name: "參考消息"
-  - id: "sputniknewscn"
-    name: "衛星通訊社"
-  - id: "zaobao"
-    name: "聯合早報"
-  - id: "mktnews"
-    name: "MKT新聞"
-  - id: "kaopu"
-    name: "靠譜新聞"
+  # - id: "toutiao"
+  #   name: "今日頭條"
+  # - id: "baidu"
+  #   name: "百度熱搜"
 
   # === 財經投資類 ===
   - id: "wallstreetcn-hot"
     name: "華爾街見聞 最熱"
-  - id: "wallstreetcn-quick"
-    name: "華爾街見聞 快訊"
-  - id: "wallstreetcn-news"
-    name: "華爾街見聞 最新"
   - id: "cls-hot"
     name: "財聯社熱門"
-  - id: "gelonghui"
-    name: "格隆匯"
-  - id: "xueqiu"
-    name: "雪球"
-  - id: "jin10"
-    name: "金十數據"
-  - id: "fastbull"
-    name: "快訊通"
+  - id: "cls-depth"
+    name: "財聯社深度"
 
   # === 社交/短視頻/娛樂類 ===
-  - id: "weibo"
-    name: "微博"
-  - id: "douyin"
-    name: "抖音"
-  - id: "bilibili-hot-search"
-    name: "bilibili 熱搜"
-  - id: "tieba"
-    name: "貼吧"
-  - id: "zhihu"
-    name: "知乎"
-  - id: "hupu"
-    name: "虎撲"
+  # - id: "weibo"
+  #   name: "微博"
+  # - id: "douyin"
+  #   name: "抖音"
+  # - id: "bilibili-hot-search"
+  #   name: "bilibili 熱搜"
+  # - id: "tieba"
+  #   name: "貼吧"
+  # - id: "zhihu"
+  #   name: "知乎"
 
   # === 科技類平台 ===
   - id: "ithome"
     name: "IT之家"
   - id: "juejin"
-    name: "掘金"
-  - id: "github"
-    name: "GitHub"
+    name: "稀土掘金"
   - id: "hackernews"
     name: "Hacker News"
-  - id: "solidot"
-    name: "Solidot"
-  - id: "v2ex"
-    name: "V2EX"
-  - id: "nowcoder"
-    name: "牛客網"
-  - id: "pcbeta"
-    name: "遠景論壇"
-  - id: "sspai"
-    name: "少數派"
-  - id: "producthunt"
-    name: "ProductHunt"
-
-  # === 其他/工具類 ===
-  - id: "chongbuluo"
-    name: "蟲部落"
-    id: "tencent-hot"
-    name: "騰訊新聞 綜合早報"
-    id: "cls-telegraph"
-    name: "財聯社 電報"
-    id: "cls-depth"
-    name: "財聯社 深度"
-    id: "fastbull-express"
-    name: "法布財經 快訊"
-    id: "fastbull-news"
-    name: "法布財經 頭條"
+  - id: "github"
+    name: "GitHub"
+  - id: "36kr-renqi"
+    name: "36氪人氣"
     
 
 # ===============================================================
@@ -175,15 +125,15 @@ rss:
       url: "http://ftr.fivefilters.org/makefulltextfeed.php?url=http%3A%2F%2Ffeeds.feedburner.com%2Ftechbang&max=3"
       max_age_days: 1                      
 
-    - id: "WOSHIPM"
-      name: "人人都是產品經理"
-      url: "http://www.woshipm.com/feed"
-      max_age_days: 1                      
+    # - id: "WOSHIPM"
+    #   name: "人人都是產品經理"
+    #   url: "http://www.woshipm.com/feed"
+    #   max_age_days: 1                      
 
-    - id: "AGRITECH-FORESIGHT"
-      name: "農業科技新脈動"
-      url: "http://agritech-foresight.atri.org.tw/rss/rss/13"
-      max_age_days: 1 
+    # - id: "AGRITECH-FORESIGHT"
+    #   name: "農業科技新脈動"
+    #   url: "http://agritech-foresight.atri.org.tw/rss/rss/13"
+    #   max_age_days: 1 
 
     - id: "Businessweekly"
       name: "商業周刊"
@@ -195,10 +145,10 @@ rss:
       url: "http://ftr.fivefilters.org/makefulltextfeed.php?url=https%3A%2F%2Fwww.managertoday.com.tw%2Frss&max=3"
       max_age_days: 1 
 
-    - id: "Toy People News"
-      name: "玩具人"
-      url: "http://rss.toy-people.com/rss_toy"
-      max_age_days: 1 
+    # - id: "Toy People News"
+    #   name: "玩具人"
+    #   url: "http://rss.toy-people.com/rss_toy"
+    #   max_age_days: 1 
 
 
     # 自定義源示例
@@ -261,11 +211,11 @@ display:
   #   1. 在此列表中
   #   2. 下方 regions 中對應開關為 true
   region_order:
-    - new_items                       # 1️⃣ 新增熱點區域
-    - hotlist                         # 2️⃣ 熱榜區域（關鍵詞匹配）
-    - rss                             # 3️⃣ RSS 訂閱區域
-    - standalone                      # 4️⃣ 獨立展示區
-    - ai_analysis                     # 5️⃣ AI 分析區域
+    - ai_analysis                     # 1️⃣ AI 分析區域
+    - new_items                       # 2️⃣ 新增熱點區域
+    - hotlist                         # 3️⃣ 熱榜區域（關鍵詞匹配）
+    - rss                             # 4️⃣ RSS 訂閱區域
+    - standalone                      # 5️⃣ 獨立展示區
 
   # 推送區域開關
   # 控制各區域是否啟用（配合 region_order 使用）
@@ -326,8 +276,8 @@ notification:
   # 💡 想要精準定時？建議使用 Docker 部署在個人服務器上
   push_window:
     enabled: false                    # 是否啟用推送時間窗口控制
-    start: "20:00"                    # 開始時間（北京時間）
-    end: "22:00"                      # 結束時間（北京時間）
+    start: "07:00"                    # 開始時間（北京時間）
+    end: "19:00"                      # 結束時間（北京時間）
     once_per_day: true                # true=窗口內只推送一次，false=窗口內每次執行都推送
 
   # 推送渠道配置
@@ -432,7 +382,7 @@ ai:
   # 完整列表: https://docs.litellm.ai/docs/providers
   # 如果你對於看英文文檔比較頭疼，那麼可以點擊頁面右下角的 【Ask AI】 ,用中文詢問怎麼配置 
   
-  model: "deepseek/deepseek-chat"
+  model: "gemini/gemini-2.0-flash"
 
   api_key: ""                       # API Key（建議使用環境變量 AI_API_KEY）
   
@@ -511,9 +461,9 @@ ai_analysis:
                                       # GitHub Action 部署默認推送約 20 次（每小時推送一次）， 約 0.1 元/天
                                       # Docker 部署默認推送 48 次(每半小時推送一次)， 約 0.2 元/天
 
-  include_rss: false                 # 是否包含 RSS 內容進行分析
+  include_rss: true                 # 是否包含 RSS 內容進行分析
 
-  include_rank_timeline: true      # 是否傳遞完整排名時間線
+  include_rank_timeline: false      # 是否傳遞完整排名時間線
                                     # false: 使用簡化格式（排名範圍+時間範圍+出現次數）
                                     # true: 傳遞完整排名變化軌跡（如 1(09:30)→2(10:00)→0(11:00)）
                                     # 啟用後 AI 能更精確分析熱度趨勢，但會額外增加 token 消耗（0.5 倍到 1 倍）
