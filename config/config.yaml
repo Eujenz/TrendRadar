@@ -334,7 +334,7 @@ storage:
   # 數據格式選項
   formats:
     sqlite: true                      # 主存儲（必須啟用）
-    txt: false                        # 是否生成 TXT 快照
+    txt: true                        # 是否生成 TXT 快照
     html: true                       # 是否生成 HTML 報告（⚠️ 郵件推送或者需要看網頁版報告必須設為 true）
 
   # 本地存儲配置
