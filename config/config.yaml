@@ -382,7 +382,7 @@ ai:
   # 完整列表: https://docs.litellm.ai/docs/providers
   # 如果你對於看英文文檔比較頭疼，那麼可以點擊頁面右下角的 【Ask AI】 ,用中文詢問怎麼配置 
   
-  model: "gemini/gemini-2.0-flash"
+  model: "gemini/gemini-1.5-flash"
 
   api_key: ""                       # API Key（建議使用環境變量 AI_API_KEY）
   
@@ -410,8 +410,8 @@ ai:
                                     # 注意：如果 API 不支持此參數(報 HTTP 400)，請設為 0 以禁用發送
 
   # 高級選項
-  num_retries: 1                    # 失敗重試次數
-  fallback_models: []               # 備用模型列表（可選）
+  num_retries: 2                    # 失敗重試次數
+  fallback_models: ["gemini/gemini-2.5-flash"]               # 備用模型列表（可選）
                                     # 示例: ["openai/gpt-4o-mini", "openai/deepseek-ai/DeepSeek-V3"]
 
   # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
